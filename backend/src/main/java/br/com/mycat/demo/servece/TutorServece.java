@@ -2,6 +2,7 @@ package br.com.mycat.demo.servece;
 
 import br.com.mycat.demo.model.Tutor;
 import br.com.mycat.demo.repository.TutorRepository;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,17 +18,23 @@ public class TutorServece implements Serializable {
     @Autowired
     TutorRepository tutorRepository;
 
-    public void create(Tutor tutor){
+    public void create(Tutor tutor) throws BadRequestException {
+
         if(tutor.getName() == null || tutor.getName().isEmpty()){
-            throw new IllegalArgumentException("Nome não pode estar vazio");
+            throw new BadRequestException("Nome não pode estar vazio");
         }else if(tutor.getEmail() == null || tutor.getEmail().isEmpty()){
-            throw new IllegalArgumentException("email não pode estar vazio");
+            throw new BadRequestException("Email não pode estar vazio");
         }else {
+                try{
+                    tutorRepository.save(tutor);
 
+                }catch (Exception error){
+                    error.printStackTrace();
+                }
 
-            tutorRepository.save(tutor);
 
         }
+
     }
 
     public List<Tutor> findAll(){
