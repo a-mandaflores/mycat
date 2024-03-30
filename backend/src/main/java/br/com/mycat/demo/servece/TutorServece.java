@@ -21,8 +21,9 @@ public class TutorServece implements Serializable {
 
     public boolean validarEmail(String email){
         String EMAIL_PATTERN =
-                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-                        "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+                "^[^@]+@[^@]+$";
+
+
 
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
 
@@ -74,7 +75,6 @@ public class TutorServece implements Serializable {
 
         }else {
             tutorUpdate.setName(tutor.getName());
-
             if (!validarEmail(tutor.getEmail())){
                 throw new BadRequestException("Falta elementos no email");
             }else{
