@@ -38,7 +38,7 @@ public class TutorController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody Tutor tutor){
+    public void update(@PathVariable Long id, @RequestBody Tutor tutor) throws BadRequestException {
         tutorServece.update(id, tutor);
     }
 }
