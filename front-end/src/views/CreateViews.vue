@@ -13,7 +13,7 @@
             <button class="criarConta" > Ja tenho conta</button>
             </router-link>
             <router-link to="/HomeViews.vue">
-            <button class="entrar" @click="postData">Criar</button>
+            <button class="entrar" @click="loginUser">Criar</button>
             </router-link>
         </div>
     </div>
@@ -26,27 +26,30 @@
 export default{
     data(){
         return{
-
+            menuLogin: false,
             responseData: null,
             requestBody: {
                 email: "",
                 name: "",
                 password:"",
                 tel: ""
-                }
+                },
             
         }
     },
 
     methods:{
         
-        postData(){
+        loginUser(){
 
             this.$emit('')
             console.log(this.requestBody)
-        }
 
+            this.menuLogin = !this.menuLogin
+            this.$emit('menuLogin', this.menuLogin)
+        }
     }
+   
 }
 </script>
 

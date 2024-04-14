@@ -10,7 +10,9 @@
             <button class="criarConta">Criar Conta</button>
             </router-link>
             
+            <router-link to="/HomeViews.vue">
             <button class="entrar" @click="loginUser">Entrar</button>
+            </router-link>
         </div>
     </div>
 
@@ -25,25 +27,29 @@ export default{
             login: {
             email: "",
             password: ""
-            }
+            },
+            menuLogin: false
         }
     },
     methods: {
         async loginUser() {
-            try {
-            const response = await fetch("http://localhost:8080/tutor", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(this.login),
-            });
-            console.log('Deu certo')
-            const result = await response.json();
-            console.log("Success:", result);
-            } catch (error) {
-                console.error("Error:", error);
-            }
+            // try {
+            // const response = await fetch("http://localhost:8080/tutor", {
+            // method: "PUT",
+            // headers: {
+            //     "Content-Type": "application/json",
+            // },
+            // body: JSON.stringify(this.login),
+            // });
+            // console.log('Deu certo')
+            // const result = await response.json();
+            // console.log("Success:", result);
+            // } catch (error) {
+            //     console.error("Error:", error);
+            // }
+
+            this.menuLogin = !this.menuLogin
+            this.$emit('menuLogin', this.menuLogin)
             }
 
         

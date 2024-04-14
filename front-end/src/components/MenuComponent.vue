@@ -1,8 +1,6 @@
-<template>
-    <!-- <div class="wave"></div> -->
-    
+<template>  
 
-    <div class="menu">
+    <div class="menu" :style="{height: menuLogin ? '10vh': '30vh'}">
         <transition>
             <div v-show="login" class="custom-shape-divider-top-1711903935">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -10,14 +8,38 @@
             </div>
         </transition>
     
-        <LogoComponent />
+        <div class="user" v-if="menuLogin">
+            <div  class="imgLogin">
+                <img class="imgLoginUser" src="../img/userImg.jpg" alt="">
+            </div>
+            
+            <div class="sideBar">
+                <span @click="view" class="material-symbols-outlined menuButton">menu</span>
+
+
+                <div v-show="sideBar" class="side" >
+                    <span @click="view" class="material-symbols-outlined flecha">arrow_forward_ios</span>
+                    
+                    <div class="meuPerfil">
+                        <span class="material-symbols-outlined icons">person</span>
+                        Perfil
+                    </div>
+                    <div class="meusPets">
+                        <span class="material-symbols-outlined icons">pets</span>
+                        Pet
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <LogoComponent v-if="!menuLogin"/>
+
     
         <router-link to="/LoginViews.vue">
-        <div class="button" @click="loginVerify()" v-show="login">
-            <span  class="material-symbols-outlined">
-            arrow_forward_ios</span>
-
-        </div>
+            <div class="button" @click="loginVerify()" v-show="login">
+                <span  class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
         </router-link>  
     </div>
 </template>
@@ -26,19 +48,36 @@
 <script>
 import LogoComponent from "../components/LogoComponent.vue"
 export default{
+    props:{menuSize: {
+        type: Boolean, 
+        required: true
+    }},
     data(){
         return{
-            login: true
+            login: true,
+            menuLogin: false,
+            sideBar: false,
         }
     },    
     components: {
         LogoComponent
     },
+    watch:{
+        menuSize(element){
+            
+            this.menuLogin = element
+            console.log(element)
+        }
+    },
     methods: {
         loginVerify(){
             this.login = !this.login
             this.$emit('loginVerify', this.login)
+        },
+        view(){
+            this.sideBar = !this.sideBar
         }
+        
     }
 }
 
@@ -53,7 +92,6 @@ export default{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 30vh;
     background-color: $black-color;
 }
 .button{
@@ -93,6 +131,58 @@ export default{
 
 .custom-shape-divider-top-1711903935 .shape-fill {
     fill: $black-color;
+}
+
+.user{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.imgLogin{
+    margin: .5rem;
+    background-color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.imgLoginUser{
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.hamburguer{
+    cursor: pointer;
+}
+
+.side {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 100vh;
+    background-color: $black-color;
+    z-index: 100;    
+}
+.flecha, .menuButton, .meuPerfil, .meusPets{
+    cursor: pointer;
+    margin: 1rem;
+    color: #fff;
+    align-items: center;
+}
+
+.meuPerfil, .meusPets{
+    display: flex;
+    align-items: center;
+}
+
+.icons{
+    font-size: .8rem;
+    margin-right: .2rem;
 }
 
 

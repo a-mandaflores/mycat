@@ -4,6 +4,7 @@ import Login from '@/views/LoginViews.vue'
 import Create from '@/views/CreateViews.vue'
 import Home from '@/views/HomeViews.vue'
 import MenuComponent from '@/components/MenuComponent.vue'
+import Pets from '@/views/PetsInfosViews.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +23,10 @@ const router = createRouter({
   {
     path: '/CreateViews.vue',
     component: Create
+  },
+  {
+    path: '/PetsInfosViews.vue',
+    component: Pets
   }]
 })
 

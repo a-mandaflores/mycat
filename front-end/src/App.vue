@@ -6,9 +6,9 @@
 
   <div :class="style">
   
-  <MenuComponent  @loginVerify="verify" />
+  <MenuComponent :menuSize="menuSize" @loginVerify="verify" />
 
-  <router-view class="login" v-show="!login" />
+  <router-view @menuLogin="menuSizeLogin" class="login" v-show="!login" />
 </div>
   </div>
 </template>
@@ -22,7 +22,8 @@ export default {
     return {
       login: true,
       style: 'menu',
-      criarContaBoolean: false
+      criarContaBoolean: false,
+      menuSize: false
     }
   },
   name: 'App',
@@ -35,6 +36,11 @@ export default {
       this.login = !this.login
       this.style = "menu-fixed"
     },
+    menuSizeLogin(element){
+      this.menuSize = element
+      console.log(element)
+      console.log(this.menuSize)
+    }
     
   }
 }
