@@ -1,26 +1,90 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+  <transition name="slide">
+      <IlustrationComponent v-show="login"/>
+  </transition>
+
+  <div :class="style">
+  
+  <MenuComponent  @loginVerify="verify" />
+
+  <router-view class="login" v-show="!login" />
+</div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import IlustrationComponent from "./components/IlustrationComponent.vue"
+import MenuComponent from "./components/MenuComponent.vue"
 
 export default {
+  data(){
+    return {
+      login: true,
+      style: 'menu',
+      criarContaBoolean: false
+    }
+  },
   name: 'App',
   components: {
-    HelloWorld
+    IlustrationComponent,
+    MenuComponent
+  },
+  methods: {
+    verify(){
+      this.login = !this.login
+      this.style = "menu-fixed"
+    },
+    
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" >
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.login{
+  position: inherit;
+}
+
+.menu-fixed {
+  animation: slideYMypet .8s;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  @keyframes slideYMypet {
+    0%{
+    transform: translateY(220%);
+  
+  }
+  100%{
+    transform: translateY(0%);
+  }
+  }
+}
+
+
+.slide-leave-active {
+  animation: slideY 0.8s;
+
+}
+
+
+
+@keyframes slideY {
+  0%{
+    transform: translateY(0);
+  
+  }
+  100%{
+    transform: translateY(-100%);
+  }
 }
 </style>

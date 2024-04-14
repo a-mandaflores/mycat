@@ -19,6 +19,7 @@ public class Tutor {
     public Long id;
     public String name;
     public String email;
-//    public int tel;
+    public int tel;
+    public String password;
 
 }

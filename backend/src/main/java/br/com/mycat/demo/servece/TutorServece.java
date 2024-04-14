@@ -36,20 +36,21 @@ public class TutorServece implements Serializable {
 
     public void create(Tutor tutor) throws BadRequestException {
 
-        if(tutor.getName() == null || tutor.getName().isEmpty()){
-            throw new BadRequestException("Nome não pode estar vazio");
-        }else if(tutor.getEmail() == null || tutor.getEmail().isEmpty()){
-            throw new BadRequestException("Email não pode estar vazio");
-        }else {
-                try{
-                    tutorRepository.save(tutor);
+//        if(tutor.getName() == null || tutor.getName().isEmpty()){
+//            throw new BadRequestException("Nome não pode estar vazio");
+//        }else if(tutor.getEmail() == null || tutor.getEmail().isEmpty()){
+//            throw new BadRequestException("Email não pode estar vazio");
+//        }else {
+//                try{
+//
+//                }catch (Exception error){
+//                    error.printStackTrace();
+//                }
+//
+//
+//        }
+        tutorRepository.save(tutor);
 
-                }catch (Exception error){
-                    error.printStackTrace();
-                }
-
-
-        }
 
     }
 
