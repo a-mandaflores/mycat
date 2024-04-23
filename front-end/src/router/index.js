@@ -1,16 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Login from '@/views/LoginViews.vue'
-import Create from '@/views/CreateViews.vue'
-import Home from '@/views/HomeViews.vue'
-import MenuComponent from '@/components/MenuComponent.vue'
-import Pets from '@/views/PetsInfosViews.vue'
+import Login from '@/views/login/LoginViews.vue'
+import Create from '@/views/login/CreateViews.vue'
+import Home from '@/views/login/IndexViews.vue'
+import Pets from '@/views/home/IndexHome.vue'
+import IndexViews from '@/views/login/IndexViews.vue'
+
+
+
 
 const router = createRouter({
   history: createWebHistory(),
   routes:[{
     path: '/',
-    component: MenuComponent
+    component: IndexViews
   },
   {
     path: '/LoginViews.vue',
@@ -25,7 +28,7 @@ const router = createRouter({
     component: Create
   },
   {
-    path: '/PetsInfosViews.vue',
+    path: '/IndexHome.vue',
     component: Pets
   }]
 })

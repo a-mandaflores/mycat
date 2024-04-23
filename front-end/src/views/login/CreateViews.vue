@@ -1,5 +1,5 @@
 <template>
-    <div class="containerLogin">
+    <div class="containerLogin" v-if="!menuLogin">
         <div class="loginInputs">
             <h1>Criar Conta</h1>
             <input type="nome" placeholder="Nome" v-model="requestBody.nome">
@@ -9,21 +9,24 @@
             <input type="password" placeholder="Senha" v-model="requestBody.password">
         </div>
         <div class="buttonLogin">
-            <router-link to="/LoginViews.vue">
-            <button class="criarConta" > Ja tenho conta</button>
-            </router-link>
+            <button class="criarConta" @click="loginUser" > Ja tenho conta</button>
+
             <router-link to="/HomeViews.vue">
             <button class="entrar" @click="loginUser">Criar</button>
             </router-link>
         </div>
     </div>
 
-
+    <LoginViews v-else/>
 </template>
 
 <script>
+import LoginViews from './LoginViews.vue'
 
 export default{
+    components:{
+        LoginViews
+    },
     data(){
         return{
             menuLogin: false,
@@ -41,10 +44,6 @@ export default{
     methods:{
         
         loginUser(){
-
-            this.$emit('')
-            console.log(this.requestBody)
-
             this.menuLogin = !this.menuLogin
             this.$emit('menuLogin', this.menuLogin)
         }
@@ -55,7 +54,7 @@ export default{
 
 
 <style lang="scss" scoped>
-@import '../styles/main.scss';
+@import '../../styles/main.scss';
 
 
 .containerLogin{

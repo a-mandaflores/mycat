@@ -1,37 +1,46 @@
 <template>
-    <div class="containerLogin">
+    <div class="containerLogin" v-if="!created">
         <div class="loginInputs">
             <h1>LOGIN</h1>
             <input type="email" placeholder="Email" v-model="email">
             <input type="password" placeholder="Senha" v-model="password">
         </div>
         <div class="buttonLogin">
-            <router-link to="/CreateViews.vue">
-            <button class="criarConta">Criar Conta</button>
-            </router-link>
-            
-            <router-link to="/HomeViews.vue">
+            <button class="criarConta" @click="criarConta" >Criar Conta</button>
             <button class="entrar" @click="loginUser">Entrar</button>
-            </router-link>
         </div>
     </div>
+
+    <CreateViews v-else />
 
 
 </template>
 
 <script>
+import router from '@/router'
+import CreateViews from './CreateViews.vue'
 
 export default{
+    components:{
+        CreateViews
+    },
     data(){
         return{
             login: {
             email: "",
             password: ""
             },
-            menuLogin: false
+            created: false,
+            
         }
     },
+    onMounted: {
+        
+    },
     methods: {
+        criarConta(){
+            this.created = !this.created
+        },
         async loginUser() {
             // try {
             // const response = await fetch("http://localhost:8080/tutor", {
@@ -47,9 +56,7 @@ export default{
             // } catch (error) {
             //     console.error("Error:", error);
             // }
-
-            this.menuLogin = !this.menuLogin
-            this.$emit('menuLogin', this.menuLogin)
+            router.push('IndexHome.vue' )
             }
 
         
@@ -61,7 +68,7 @@ export default{
 
 
 <style lang="scss" scoped>
-@import '../styles/main.scss';
+@import '../../styles/main.scss';
 
 
 .containerLogin{
