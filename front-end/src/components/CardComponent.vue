@@ -1,76 +1,79 @@
 <template>
-    <div class="card">
-        <div class="display-img">
-        <div class="card-img">
-            <img src="../img/cat.jpg" alt="">
+
+    <div class="card" @click="cardPet">
+        <div class="card-container">
+            <div class="name">Apollo</div>
+            <div class="type">
+                <Icon icon="solar:cat-linear" />
+                Gato</div>
+            <div class="birtday">
+                <Icon icon="mingcute:birthday-2-line" />
+                
+                1 ano</div>
         </div>
 
-        <div class="card-cat">
-        <div class="name">Apollo</div>
-        <div class="type">gato</div>
-        </div>
-        </div>
+        <img class="imagem" src="../assets/img/cat.jpg" alt="">
 
-        <div class="year">1 ano</div>
     </div>
+
+    
+
 </template>
 
-<script></script>
+<script>
+import { Icon } from '@iconify/vue';
+
+export default{
+    components:{
+        Icon
+    },
+    methods: {
+        cardPet(){
+            console.log('Estou passando')
+        }
+    }
+}
+</script>
 
 
 <style lang="scss" scoped>
 @import '../styles/main.scss';
 
 .card{
-    cursor: pointer;
-    width: 90vw;
-    background-color: $card-bg-color;
-    margin: 1rem;
-    padding: .6rem;
     display: flex;
     align-items: top;
     justify-content: space-between;
+
+    color: $black-color;
+    box-shadow: 1px 5px 8px rgb(0, 0, 0,.1);
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 90vw;
+    background-color: #fff;
+    margin: 1rem;
+    padding: 1rem;
     transition: .2s ease-in-out;
+    height: 9rem;
 }
 
-.card:hover{
-    background-color: rgb(175, 29, 215, .4);
-}
-.display-img{
-    display: flex;
+.card-container{
+    padding-left: 1rem;
 }
 
-.card-cat{
-    margin-left: .4rem;
-    .name{
-        font-size: .8rem;
-        font-weight: 700;
-    }
-
-    .type{
-        font-size: .5rem;
-        text-transform: uppercase;
-    }
-}
-
-.year{
-    font-size: .8rem;
+.name{
+    font-size: 1.5rem;
     font-weight: 700;
 }
-
-.card-img {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
+.imagem{
+    border-radius: 2rem;
+    margin-right: 1rem;
+}
+.type, .birtday{
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
 }
 
-img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-}
 </style>

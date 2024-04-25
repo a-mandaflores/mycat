@@ -1,9 +1,10 @@
 <template>
     <div class="container">
         <transition name="slide">
-            <IlustrationComponent v-show="login"/>
+          <IlustrationComponent v-show="login"/>
         </transition>
-        <MenuComponent class="slideYMypet" @loginVerify="verify"/>
+          <MenuComponent @loginVerify="verify"/>
+
     </div>
     <LoginViews v-if="!login"/>
 

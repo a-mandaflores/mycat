@@ -30,5 +30,8 @@ export default {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+body{
+  background-color: #f7f7f7;
 
+}
 </style>

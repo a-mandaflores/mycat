@@ -2,10 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Login from '@/views/login/LoginViews.vue'
 import Create from '@/views/login/CreateViews.vue'
-import Home from '@/views/login/IndexViews.vue'
-import Pets from '@/views/home/IndexHome.vue'
+import HomePets from '@/views/home/IndexHome.vue'
+import Pets from '@/views/home/PetsInfosViews.vue'
 import IndexViews from '@/views/login/IndexViews.vue'
-
 
 
 
@@ -20,15 +19,15 @@ const router = createRouter({
     component: Login
   },
   {
-    path: '/HomeViews.vue',
-    component: Home
-  },
-  {
     path: '/CreateViews.vue',
     component: Create
   },
   {
     path: '/IndexHome.vue',
+    component: HomePets
+  },
+  {
+    path: '/PetsInfosViews.vue',
     component: Pets
   }]
 })
