@@ -46,7 +46,7 @@ export default{
 
     color: $black-color;
     box-shadow: 1px 5px 8px rgb(0, 0, 0,.1);
-    border-radius: 2rem;
+    border-radius: 1rem;
     cursor: pointer;
     width: 90vw;
     background-color: #fff;
@@ -61,15 +61,17 @@ export default{
 }
 
 .name{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
 }
 .imagem{
-    border-radius: 2rem;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
     margin-right: 1rem;
 }
 .type, .birtday{
-    font-size: .8rem;
+    font-size: .6rem;
     text-transform: uppercase;
     font-weight: 500;
     display: flex;

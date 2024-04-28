@@ -1,12 +1,12 @@
 <template>
-    <div class="container">
-        <transition name="slide">
+    <div  >
+        
           <IlustrationComponent v-show="login"/>
-        </transition>
+        
           <MenuComponent @loginVerify="verify"/>
 
     </div>
-    <LoginViews v-if="!login"/>
+    <LoginViews class="animate__animated animate__fadeInUp" v-if="!login"/>
 
 </template>
 
@@ -57,51 +57,5 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.menu-fixed {
-    animation: slideYMypet .8s;
-  
-    position: fixed;
-    top: 0;
-    width: 100%;
-    @keyframes slideYMypet {
-      0%{
-      transform: translateY(220%);
-    
-    }
-    100%{
-      transform: translateY(0%);
-    }
-    }
-  }
 
-  @keyframes slideY {
-    0%{
-      transform: translateY(0);
-    
-    }
-    100%{
-      transform: translateY(-100%);
-    }
-  }
-
-
-  
-.login{
-    position: inherit;
-  }
-  
-  .slide-leave-active {
-    animation: slideY 0.8s;
-  
-  }
-  
-  @keyframes slideY {
-    0%{
-      transform: translateY(0);
-    
-    }
-    100%{
-      transform: translateY(-100%);
-    }
-  }
 </style>

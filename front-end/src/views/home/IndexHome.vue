@@ -14,7 +14,7 @@
         <img class="img-cat-dog animate__animated animate__fadeInUp" src="../../assets/ilustration/cat-and-dog.svg" alt="">
     </div>
 
-    <PetsInfosViews v-else/>
+    <PetsInfosViews @card="cardBack" v-if="!cardPet"/>
     
     
 
@@ -40,6 +40,9 @@ export default{
     },
     methods: {
         pet(){
+            this.cardPet = !this.cardPet
+        },
+        cardBack(){
             this.cardPet = !this.cardPet
         }
     }
